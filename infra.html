@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infrastructure Partners — Institutional Infrastructure Capital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Barlow:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0a1628;--navy-mid:#0d1f3c;--blue:#1a4bbd;--blue-b:#2060e8;--blue-l:#3a7fff;--cyan:#00aaff;--gold:#c8a84b;--gold-l:#e0be6a;--white:#ffffff;--off:#e8edf5;--muted:rgba(255,255,255,0.55);--border:rgba(255,255,255,0.1);--cond:'Barlow Condensed',sans-serif;--sans:'Barlow',sans-serif;--serif:'Playfair Display',Georgia,serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--navy);color:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font-family:inherit;border:none}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--navy)}::-webkit-scrollbar-thumb{background:var(--blue)}
+.wrap{max-width:1280px;margin:0 auto;padding:0 48px}
+.wrap-sm{max-width:960px;margin:0 auto;padding:0 48px}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .75s cubic-bezier(.22,1,.36,1),transform .75s cubic-bezier(.22,1,.36,1)}
+.reveal.up{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-family:var(--cond);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
+.eyebrow::before,.eyebrow::after{content:'';display:block;width:28px;height:1px;background:var(--cyan)}
+.sec-h{font-family:var(--cond);font-size:clamp(34px,5vw,56px);font-weight:800;line-height:1.02;text-transform:uppercase;letter-spacing:.02em}
+.sec-h em{font-style:italic;color:var(--blue-l);font-family:var(--serif);text-transform:none}
+.sec-h .gld{color:var(--gold)}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--cond);font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:14px 28px;transition:all .25s ease}
+.btn-b{background:var(--blue);color:#fff;border:2px solid var(--blue)}.btn-b:hover{background:var(--blue-b);border-color:var(--blue-b);transform:translateY(-2px);box-shadow:0 8px 28px rgba(26,75,189,.5)}
+.btn-g{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.4)}.btn-g:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.btn-gold{background:var(--gold);color:var(--navy);border:2px solid var(--gold)}.btn-gold:hover{background:var(--gold-l);transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,168,75,.4)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;transition:background .3s,box-shadow .3s}
+nav.sc{background:rgba(6,12,24,.96);backdrop-filter:blur(16px);box-shadow:0 2px 40px rgba(0,0,0,.5),0 1px 0 rgba(26,75,189,.3)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:76px;padding:0 48px;border-bottom:1px solid rgba(255,255,255,.05)}
+.logo{display:flex;align-items:center;gap:14px}
+.logo-hex{width:42px;height:42px;background:linear-gradient(135deg,var(--blue),var(--blue-b));clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);display:flex;align-items:center;justify-content:center;font-family:var(--cond);font-size:17px;font-weight:800}
+.logo-txt .l1{font-family:var(--cond);font-size:15px;font-weight:800;letter-spacing:.2em;text-transform:uppercase}
+.logo-txt .l2{font-family:var(--cond);font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--blue-l)}
+.nav-links{display:flex;align-items:center;gap:4px;list-style:none}
+.nav-links a{font-family:var(--cond);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.65);padding:6px 12px;transition:color .2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:12px;right:12px;height:1px;background:var(--blue-l);transform:scaleX(0);transition:transform .25s}
+.nav-links a:hover{color:#fff}.nav-links a:hover::after{transform:scaleX(1)}
+.nav-btn{background:var(--blue);color:#fff;font-family:var(--cond);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:10px 20px;border:2px solid var(--blue);transition:all .2s}.nav-btn:hover{background:var(--blue-b)}
+.hbg{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:4px}
+.hbg span{display:block;width:24px;height:2px;background:#fff;transition:all .3s}
+.mob-nav{display:none;position:fixed;inset:0;background:rgba(6,12,24,.98);z-index:199;flex-direction:column;align-items:center;justify-content:center;gap:28px}
+.mob-nav.open{display:flex}
+.mob-nav a{font-family:var(--cond);font-size:28px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}.mob-nav a:hover{color:var(--blue-l)}
+
+/* HERO */
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+.h-bg{position:absolute;inset:0;z-index:0;background-image:url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1920&q=80');background-size:cover;background-position:center 40%}
+.h-ov{position:absolute;inset:0;z-index:1;background:linear-gradient(105deg,rgba(6,12,24,.96) 0%,rgba(8,18,40,.82) 48%,rgba(10,22,50,.35) 100%),linear-gradient(0deg,rgba(6,12,24,.75) 0%,transparent 50%)}
+.h-rays{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none}
+.h-rays::before{content:'';position:absolute;top:-10%;left:38%;width:2px;height:120%;background:linear-gradient(180deg,transparent,rgba(26,75,189,.45),transparent);transform:rotate(-14deg);animation:ray 7s ease-in-out infinite}
+.h-rays::after{content:'';position:absolute;top:-10%;left:58%;width:1px;height:120%;background:linear-gradient(180deg,transparent,rgba(0,170,255,.2),transparent);transform:rotate(-9deg);animation:ray 9s ease-in-out infinite reverse}
+@keyframes ray{0%,100%{opacity:.3}50%{opacity:1}}
+.h-img-grid{position:absolute;right:0;top:0;bottom:0;z-index:1;width:40%;display:grid;grid-template-rows:1fr 1fr;animation:fadeIn 1.2s .8s both}
+.h-img-panel{overflow:hidden;position:relative}
+.h-img-panel::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(6,12,24,.9) 0%,rgba(6,12,24,.1) 100%)}
+.h-img-panel img{width:100%;height:100%;object-fit:cover;filter:grayscale(15%) brightness(.75)}
+.h-content{position:relative;z-index:2;padding:140px 0 180px;max-width:740px}
+.h-ew{display:flex;align-items:center;gap:14px;margin-bottom:26px;animation:fadeUp .8s .2s both}
+.h-ew-bar{width:46px;height:2px;background:var(--blue-l)}
+.h-ew span{font-family:var(--cond);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--blue-l)}
+.h-h1{font-family:var(--cond);font-size:clamp(50px,8vw,92px);font-weight:800;line-height:.94;text-transform:uppercase;color:#fff;animation:fadeUp .9s .35s both}
+.h-h1 .hi{display:block;font-style:italic;color:var(--blue-l);font-family:var(--serif);text-transform:none;font-size:.82em}
+.h-sub{font-size:16px;line-height:1.75;color:var(--muted);max-width:520px;margin:26px 0 38px;animation:fadeUp .9s .5s both}
+.h-sub strong{color:#fff;font-weight:600}
+.h-btns{display:flex;flex-wrap:wrap;gap:14px;animation:fadeUp .9s .65s both}
+.h-fade{position:absolute;bottom:0;left:0;right:0;height:80px;z-index:3;background:linear-gradient(transparent,var(--navy))}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* STATS */
+.stats{background:linear-gradient(90deg,#040c1d 0%,#0b1930 50%,#040c1d 100%);border-top:2px solid var(--blue);border-bottom:1px solid rgba(26,75,189,.25);position:relative;z-index:10}
+.stats-in{display:grid;grid-template-columns:repeat(5,1fr)}
+.stat{padding:26px 20px;text-align:center;border-right:1px solid rgba(255,255,255,.06)}
+.stat:last-child{border-right:none}
+.sv{font-family:var(--cond);font-size:30px;font-weight:800;color:var(--blue-l);line-height:1;margin-bottom:6px}
+.sv.gd{color:var(--gold)}
+.sl{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+/* PLATFORM STRIP */
+.plat{background:#fff;color:var(--navy);padding:52px 0;text-align:center}
+.plat-ew{display:inline-flex;align-items:center;gap:12px;font-family:var(--cond);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+.plat-ew::before,.plat-ew::after{content:'';display:block;width:28px;height:1px;background:var(--blue)}
+.plat p{font-family:var(--cond);font-size:clamp(17px,3vw,26px);font-weight:400;color:#1a2540;max-width:780px;margin:0 auto;line-height:1.45}
+.plat p strong{font-weight:800;color:var(--navy)}
+
+/* SECTION BG helper */
+.sec{position:relative;padding:100px 0;overflow:hidden}
+.sbg{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center}
+.sov{position:absolute;inset:0;z-index:1}
+.sc-inner{position:relative;z-index:2}
+
+/* SOLUTIONS */
+#solutions .sbg{background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80');filter:grayscale(30%) brightness(.22)}
+#solutions .sov{background:linear-gradient(180deg,rgba(6,12,24,.88) 0%,rgba(6,12,24,.72) 50%,rgba(6,12,24,.92) 100%)}
+.sol-head{text-align:center;margin-bottom:60px}
+.sol-head h2{font-family:var(--cond);font-size:clamp(34px,5vw,58px);font-weight:800;text-transform:uppercase}
+.sol-head h2 span{color:var(--blue-l);font-style:italic;font-family:var(--serif);text-transform:none}
+.sol-divline{display:flex;align-items:center;gap:18px;justify-content:center;margin:14px 0}
+.sol-divline::before,.sol-divline::after{content:'';flex:1;max-width:110px;height:1px;background:rgba(255,255,255,.18)}
+.sol-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.sol-card{background:rgba(6,12,24,.85);border:1px solid rgba(26,75,189,.22);backdrop-filter:blur(8px);display:flex;flex-direction:column;overflow:hidden;position:relative;transition:transform .3s,border-color .3s,background .3s}
+.sol-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.sol-card:hover::before{transform:scaleX(1)}
+.sol-card:hover{background:rgba(26,75,189,.15);border-color:rgba(26,75,189,.6);transform:translateY(-4px)}
+.sol-img{width:100%;height:160px;overflow:hidden;position:relative}
+.sol-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(15%) brightness(.65);transition:transform .5s,filter .3s}
+.sol-card:hover .sol-img img{transform:scale(1.06);filter:grayscale(0%) brightness(.8)}
+.sol-img-ov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(6,12,24,.95) 100%)}
+.sol-body{padding:26px 22px;flex:1;display:flex;flex-direction:column}
+.sol-body h3{font-family:var(--cond);font-size:19px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px}
+.sol-list{list-style:none;flex:1;margin-bottom:18px}
+.sol-list li{font-size:13px;color:var(--muted);padding:5px 0;border-bottom:1px solid rgba(255,255,255,.05);display:flex;align-items:center;gap:8px}
+.sol-list li::before{content:'●';color:var(--blue-l);font-size:6px;flex-shrink:0}
+.sol-cta-btn{background:none;border:1px solid var(--blue-l);color:var(--blue-l);font-family:var(--cond);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:10px 14px;display:flex;align-items:center;gap:8px;transition:all .2s;width:100%;cursor:pointer;margin-top:auto}
+.sol-cta-btn:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+.sol-cta-arrow{margin-left:auto}
+.why-card .sol-body h3{color:var(--gold)}
+.why-list{list-style:none;flex:1;margin-bottom:18px}
+.why-list li{font-size:13px;color:var(--off);padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:10px}
+.why-list li::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0}
+
+/* INFRA 2.0 */
+#infra2 .sbg{background-image:url('https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=1920&q=80');filter:grayscale(20%) brightness(.18)}
+#infra2 .sov{background:linear-gradient(90deg,rgba(6,12,24,.98) 0%,rgba(6,12,24,.87) 60%,rgba(6,12,24,.65) 100%)}
+.i2-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.i2-left p{font-size:15px;color:var(--muted);line-height:1.8;margin:16px 0 20px}
+.proc-box{margin-top:48px;padding:36px;background:rgba(255,255,255,.03);border:1px solid rgba(26,75,189,.3)}
+.proc-box h4{font-family:var(--cond);font-size:16px;font-weight:700;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:28px;text-align:center}
+.proc-row{display:flex;align-items:center;justify-content:space-between;gap:4px;flex-wrap:wrap}
+.proc-step{display:flex;flex-direction:column;align-items:center;gap:8px;flex:1}
+.proc-ico{width:44px;height:44px;border:2px solid rgba(26,75,189,.45);display:flex;align-items:center;justify-content:center;font-size:18px;background:rgba(26,75,189,.1)}
+.proc-step span{font-family:var(--cond);font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);text-align:center}
+.proc-arr{color:var(--blue-l);font-size:18px;margin-top:-22px;flex-shrink:0}
+.cmp{border:1px solid rgba(26,75,189,.3);overflow:hidden}
+.cmp-h{display:grid;grid-template-columns:1fr 1fr 1fr;background:rgba(26,75,189,.2)}
+.cmp-h div{padding:13px 16px;font-family:var(--cond);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--blue-l);border-right:1px solid rgba(255,255,255,.05)}
+.cmp-r{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid rgba(255,255,255,.04);transition:background .2s}
+.cmp-r:hover{background:rgba(26,75,189,.07)}
+.cmp-r div{padding:12px 16px;font-size:12px;color:rgba(255,255,255,.55);border-right:1px solid rgba(255,255,255,.03);line-height:1.5}
+.cmp-r div:first-child{color:rgba(255,255,255,.38);font-weight:500}
+.cmp-r div:last-child{color:var(--blue-l)}
+
+/* PUBLIC */
+#public .sbg{background-image:url('https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1920&q=80');filter:grayscale(40%) brightness(.18)}
+#public .sov{background:linear-gradient(270deg,rgba(6,12,24,.98) 0%,rgba(6,12,24,.87) 55%,rgba(6,12,24,.58) 100%)}
+.pub-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px}
+.pub-feats{display:flex;flex-direction:column;gap:2px;margin-top:30px}
+.pub-feat{display:flex;gap:14px;padding:18px;background:rgba(255,255,255,.03);border-left:2px solid rgba(26,75,189,.4);transition:border-color .2s,background .2s}
+.pub-feat:hover{border-left-color:var(--blue-l);background:rgba(26,75,189,.06)}
+.pf-ico{width:34px;height:34px;background:rgba(26,75,189,.2);border:1px solid rgba(26,75,189,.4);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.pf-t strong{display:block;font-family:var(--cond);font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#fff;margin-bottom:4px}
+.pf-t span{font-size:13px;color:var(--muted);line-height:1.6}
+.faq-wrap{}
+.faq-item{border-bottom:1px solid rgba(255,255,255,.07)}
+.faq-q{width:100%;text-align:left;background:none;border:none;padding:18px 0;display:flex;justify-content:space-between;align-items:center;font-family:var(--cond);font-size:15px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--off);cursor:pointer;transition:color .2s}
+.faq-q:hover{color:var(--blue-l)}
+.faq-plus{width:26px;height:26px;border:1px solid rgba(26,75,189,.5);display:flex;align-items:center;justify-content:center;font-size:17px;color:var(--blue-l);flex-shrink:0;transition:transform .3s,background .2s}
+.faq-item.active .faq-plus{transform:rotate(45deg);background:rgba(26,75,189,.2)}
+.faq-ans{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.22,1,.36,1),padding .3s}
+.faq-ans.open{max-height:180px;padding-bottom:14px}
+.faq-ans p{font-size:14px;color:var(--muted);line-height:1.8}
+
+/* DEVELOPER */
+#developer .sbg{background-image:url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920&q=80');filter:grayscale(20%) brightness(.18)}
+#developer .sov{background:linear-gradient(90deg,rgba(6,12,24,.97) 0%,rgba(6,12,24,.84) 60%,rgba(6,12,24,.55) 100%)}
+.dev-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:start}
+.cap-label{font-family:var(--cond);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue-l);margin-bottom:14px;margin-top:28px;display:flex;align-items:center;gap:12px}
+.cap-label::after{content:'';flex:1;height:1px;background:rgba(26,75,189,.3)}
+.sl{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;margin-bottom:2px;font-family:var(--cond);font-size:13px;font-weight:600;letter-spacing:.05em;text-transform:uppercase}
+.sl-note{font-size:10px;opacity:.55;letter-spacing:.12em}
+.sl1{background:linear-gradient(90deg,rgba(26,75,189,.9),rgba(26,75,189,.7));color:#fff}
+.sl2{background:linear-gradient(90deg,rgba(26,75,189,.6),rgba(26,75,189,.44));color:var(--off)}
+.sl3{background:linear-gradient(90deg,rgba(200,168,75,.22),rgba(200,168,75,.12));color:var(--gold-l);border:1px solid rgba(200,168,75,.28)}
+.sl4{background:rgba(200,168,75,.08);color:rgba(200,168,75,.78);border:1px solid rgba(200,168,75,.15)}
+.sl5{background:rgba(255,255,255,.04);color:var(--muted);border:1px dashed rgba(255,255,255,.14)}
+.wf-label{font-family:var(--cond);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue-l);margin:28px 0 14px;display:flex;align-items:center;gap:12px}
+.wf-label::after{content:'';flex:1;height:1px;background:rgba(26,75,189,.3)}
+.wf{display:flex;flex-direction:column;gap:2px}
+.wf-step{display:flex;align-items:center;gap:14px;padding:12px 14px;background:rgba(255,255,255,.03);border-left:2px solid rgba(26,75,189,.38);transition:border-color .2s}
+.wf-step:hover{border-left-color:var(--blue-l)}
+.wf-n{font-family:var(--cond);font-size:11px;color:var(--blue-l);width:20px;flex-shrink:0}
+.wf-step span:last-child{font-size:13px;color:var(--muted)}
+.risk-2{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:28px}
+.risk-card{padding:16px;background:rgba(26,75,189,.07);border:1px solid rgba(26,75,189,.18)}
+.risk-card strong{display:block;font-family:var(--cond);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--blue-l);margin-bottom:5px}
+.risk-card span{font-size:12px;color:var(--muted)}
+
+/* EXECUTION */
+#execution .sbg{background-image:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1920&q=80');filter:grayscale(30%) brightness(.13)}
+#execution .sov{background:linear-gradient(180deg,rgba(6,12,24,.92) 0%,rgba(6,12,24,.74) 50%,rgba(6,12,24,.96) 100%)}
+.exec-head{text-align:center;margin-bottom:70px}
+.phases{display:flex;flex-direction:column;gap:3px;margin-bottom:80px}
+.phase{display:grid;grid-template-columns:130px 1fr;background:rgba(6,12,24,.82);border:1px solid rgba(26,75,189,.18);backdrop-filter:blur(8px);overflow:hidden;transition:border-color .3s,background .3s}
+.phase:hover{border-color:rgba(26,75,189,.55);background:rgba(26,75,189,.06)}
+.ph-num{padding:28px;display:flex;flex-direction:column;justify-content:center;align-items:center;background:rgba(26,75,189,.1);border-right:1px solid rgba(26,75,189,.18);text-align:center}
+.ph-tag{font-family:var(--cond);font-size:9px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+.ph-n{font-family:var(--cond);font-size:44px;font-weight:800;color:var(--blue-l);line-height:1}
+.ph-info{padding:28px 32px}
+.ph-info h3{font-family:var(--cond);font-size:19px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#fff;margin-bottom:8px}
+.ph-info p{font-size:14px;color:var(--muted);line-height:1.75}
+.esc-hd{text-align:center;margin-bottom:36px}
+.esc-hd h3{font-family:var(--cond);font-size:34px;font-weight:800;text-transform:uppercase}
+.esc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px}
+.ec{padding:30px 22px;text-align:center;background:rgba(6,12,24,.8);border:1px solid rgba(26,75,189,.14);border-top:3px solid;transition:transform .3s}
+.ec:hover{transform:translateY(-4px)}
+.ec1{border-top-color:rgba(26,75,189,.38)}.ec2{border-top-color:rgba(26,75,189,.62)}.ec3{border-top-color:rgba(26,75,189,.88)}.ec4{border-top-color:var(--gold);background:rgba(200,168,75,.05)}
+.ec-lv{font-family:var(--cond);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue-l);margin-bottom:10px;display:block}
+.ec4 .ec-lv{color:var(--gold)}
+.ec h4{font-family:var(--cond);font-size:15px;font-weight:700;text-transform:uppercase;color:#fff;margin-bottom:8px}
+.ec p{font-size:12px;color:var(--muted);line-height:1.7}
+
+/* INVESTOR */
+#investor .sbg{background-image:url('https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=1920&q=80');filter:grayscale(30%) brightness(.15)}
+#investor .sov{background:linear-gradient(270deg,rgba(6,12,24,.97) 0%,rgba(6,12,24,.84) 55%,rgba(6,12,24,.58) 100%)}
+.inv-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px}
+.pillars{display:flex;flex-direction:column;gap:2px;margin-top:26px}
+.prow{display:flex;align-items:center;gap:14px;padding:14px 16px;background:rgba(255,255,255,.03);border-left:2px solid rgba(26,75,189,.38);transition:all .2s}
+.prow:hover{background:rgba(26,75,189,.08);border-left-color:var(--blue-l)}
+.pn{font-family:var(--cond);font-size:12px;color:var(--blue-l);width:22px;flex-shrink:0;font-weight:700}
+.prow strong{font-family:var(--cond);font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--off)}
+.rep-panel{background:rgba(6,12,24,.9);border:1px solid rgba(26,75,189,.28);padding:36px;backdrop-filter:blur(8px)}
+.rep-panel h3{font-family:var(--cond);font-size:20px;font-weight:700;text-transform:uppercase;color:#fff;margin-bottom:24px;letter-spacing:.08em}
+.ri{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.ri-chk{width:19px;height:19px;border:1px solid var(--blue-l);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--blue-l);flex-shrink:0;margin-top:1px}
+.ri span{font-size:13px;color:var(--muted);line-height:1.6}
+.qual{margin-top:22px;padding:18px;background:rgba(200,168,75,.05);border:1px solid rgba(200,168,75,.22)}
+.qual p{font-size:11px;color:rgba(255,255,255,.45);line-height:1.8}
+.qual strong{color:var(--gold-l)}
+
+/* CASES */
+#cases .sbg{background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80');filter:grayscale(40%) brightness(.12)}
+#cases .sov{background:linear-gradient(180deg,rgba(6,12,24,.93) 0%,rgba(6,12,24,.76) 50%,rgba(6,12,24,.96) 100%)}
+.feat-case{display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(26,75,189,.28);margin-bottom:3px;overflow:hidden}
+.case-img{position:relative;overflow:hidden;min-height:340px}
+.case-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(15%) brightness(.65);transition:transform .6s}
+.feat-case:hover .case-img img{transform:scale(1.04)}
+.case-img-ov{position:absolute;inset:0;background:linear-gradient(90deg,transparent 50%,rgba(6,12,24,.9) 100%),linear-gradient(0deg,rgba(6,12,24,.55) 0%,transparent 50%)}
+.case-badge-wrap{position:absolute;top:18px;left:18px}
+.cbadge{display:inline-block;font-family:var(--cond);font-size:10px;letter-spacing:.18em;text-transform:uppercase;background:var(--blue);color:#fff;padding:5px 12px}
+.case-body{padding:44px;background:rgba(6,12,24,.9)}
+.case-body h3{font-family:var(--cond);font-size:26px;font-weight:800;text-transform:uppercase;color:#fff;margin:14px 0 14px}
+.case-body > p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:24px}
+.cms{display:flex;flex-direction:column;gap:2px}
+.cm{display:flex;gap:12px;padding:12px 14px;background:rgba(26,75,189,.07);border-left:2px solid rgba(26,75,189,.45)}
+.cm strong{font-family:var(--cond);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-l);white-space:nowrap}
+.cm span{font-size:12px;color:var(--muted)}
+.ph-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.ph-card{position:relative;overflow:hidden;min-height:250px;border:1px solid rgba(26,75,189,.18);transition:border-color .3s}
+.ph-card:hover{border-color:rgba(26,75,189,.55)}
+.ph-bg{position:absolute;inset:0}
+.ph-bg img{width:100%;height:100%;object-fit:cover;filter:grayscale(15%) brightness(.38);transition:transform .5s}
+.ph-card:hover .ph-bg img{transform:scale(1.06)}
+.ph-ov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(6,12,24,.96) 100%)}
+.ph-body{position:absolute;bottom:0;left:0;right:0;padding:24px 20px;z-index:2}
+.ph-tag{font-family:var(--cond);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue-l);margin-bottom:7px;display:block}
+.ph-body h4{font-family:var(--cond);font-size:17px;font-weight:700;text-transform:uppercase;color:#fff;margin-bottom:5px}
+.ph-body p{font-size:12px;color:var(--muted)}
+.ph-pend{font-family:var(--cond);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-top:8px;display:block}
+
+/* ABOUT */
+#about .sbg{background-image:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1920&q=80');filter:grayscale(30%) brightness(.12);background-position:center top}
+#about .sov{background:linear-gradient(90deg,rgba(6,12,24,.98) 0%,rgba(6,12,24,.88) 60%,rgba(6,12,24,.62) 100%)}
+.ab-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.ab-left p{font-size:15px;color:var(--muted);line-height:1.8;margin:14px 0 14px}
+.jv{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center;margin-top:36px;padding:24px;background:rgba(255,255,255,.03);border:1px solid rgba(26,75,189,.2)}
+.jv-e{text-align:center}
+.jv-e strong{display:block;font-family:var(--cond);font-size:14px;font-weight:700;text-transform:uppercase;color:#fff;margin-bottom:5px;letter-spacing:.06em}
+.jv-e span{font-size:11px;color:var(--muted)}
+.jv-plus{font-family:var(--cond);font-size:24px;color:var(--blue-l);font-weight:300;text-align:center}
+.prncpls{display:flex;flex-direction:column;gap:3px}
+.prn{display:flex;gap:18px;padding:26px;background:rgba(6,12,24,.75);border:1px solid rgba(26,75,189,.14);backdrop-filter:blur(8px);transition:border-color .2s,background .2s}
+.prn:hover{border-color:rgba(26,75,189,.48);background:rgba(26,75,189,.08)}
+.prn-ico{width:42px;height:42px;background:rgba(26,75,189,.18);border:1px solid rgba(26,75,189,.38);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
+.prn-t h4{font-family:var(--cond);font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#fff;margin-bottom:7px}
+.prn-t p{font-size:13px;color:var(--muted);line-height:1.7}
+
+/* CONTACT */
+#contact .sbg{background-image:url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1920&q=80');filter:grayscale(40%) brightness(.1);background-position:center 30%}
+#contact .sov{background:linear-gradient(90deg,rgba(6,12,24,.98) 0%,rgba(6,12,24,.94) 100%)}
+.ct-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:80px;align-items:start}
+.ct-info p{font-size:15px;color:var(--muted);line-height:1.8;margin:14px 0 28px}
+.ct-proc{display:flex;flex-direction:column}
+.ct-step{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.ct-dot{width:28px;height:28px;border-radius:50%;background:rgba(26,75,189,.18);border:1px solid rgba(26,75,189,.45);display:flex;align-items:center;justify-content:center;font-family:var(--cond);font-size:11px;color:var(--blue-l);flex-shrink:0;font-weight:700}
+.ct-step span{font-size:14px;color:var(--off);line-height:1.5;padding-top:3px}
+.form-card{background:rgba(6,12,24,.92);border:1px solid rgba(26,75,189,.3);padding:44px;backdrop-filter:blur(12px);border-top:3px solid var(--blue)}
+.fg2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fg{display:flex;flex-direction:column;gap:6px}
+.fg.full{grid-column:1 / -1}
+label{font-family:var(--cond);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+input,select,textarea{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#fff;font-family:var(--sans);font-size:14px;padding:12px 14px;outline:none;width:100%;transition:border-color .2s,background .2s;appearance:none}
+input::placeholder,textarea::placeholder{color:rgba(255,255,255,.22)}
+input:focus,select:focus,textarea:focus{border-color:var(--blue-l);background:rgba(26,75,189,.07)}
+select option{background:var(--navy-mid);color:#fff}
+textarea{resize:vertical;min-height:100px}
+.form-disc{margin-top:14px;padding:12px 14px;background:rgba(255,255,255,.03);border-left:2px solid rgba(200,168,75,.38);font-size:11px;color:rgba(255,255,255,.35);line-height:1.7}
+.form-sub{margin-top:18px;width:100%;justify-content:center;font-size:13px;padding:16px}
+
+/* CTA BAND */
+.cta-band{position:relative;padding:76px 0;overflow:hidden;background:linear-gradient(135deg,#050e20 0%,#0c1e4c 50%,#050e20 100%);border-top:1px solid rgba(26,75,189,.38);border-bottom:1px solid rgba(26,75,189,.38)}
+.cta-band::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(26,75,189,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(26,75,189,.06) 1px,transparent 1px);background-size:60px 60px}
+.cta-in{position:relative;z-index:1;text-align:center}
+.cta-in h2{font-family:var(--cond);font-size:clamp(30px,5vw,52px);font-weight:800;text-transform:uppercase;letter-spacing:.03em;margin-bottom:10px}
+.cta-in p{font-size:15px;color:var(--muted);margin-bottom:32px;max-width:480px;margin-left:auto;margin-right:auto}
+.cta-btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+
+/* FOOTER */
+footer{background:#030912;border-top:1px solid rgba(26,75,189,.18)}
+.ft{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;padding:76px 48px 56px;max-width:1280px;margin:0 auto}
+.fb p{font-size:13px;color:rgba(255,255,255,.38);line-height:1.9;margin:14px 0 20px}
+.fjv{font-family:var(--cond);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(26,75,189,.6)}
+.fc h5{font-family:var(--cond);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--blue-l);margin-bottom:18px}
+.fc ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.fc ul a{font-size:13px;color:rgba(255,255,255,.42);transition:color .2s}.fc ul a:hover{color:var(--blue-l)}
+.fb2{border-top:1px solid rgba(255,255,255,.05);padding:22px 48px;max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px}
+.fb2 p{font-size:12px;color:rgba(255,255,255,.22)}
+.flegal{font-size:11px;color:rgba(255,255,255,.18);max-width:660px;line-height:1.7}
+
+/* RESPONSIVE */
+@media(max-width:1100px){.sol-grid{grid-template-columns:1fr 1fr}.esc-grid{grid-template-columns:1fr 1fr}.ft{grid-template-columns:1fr 1fr;gap:36px}.stats-in{grid-template-columns:1fr 1fr 1fr}}
+@media(max-width:900px){.wrap,.wrap-sm{padding:0 24px}.i2-grid,.pub-grid,.dev-grid,.inv-grid,.ab-grid,.ct-grid,.feat-case{grid-template-columns:1fr;gap:36px}.h-img-grid{display:none}.ph-grid{grid-template-columns:1fr 1fr}.sol-grid{grid-template-columns:1fr 1fr}.ft{grid-template-columns:1fr}}
+@media(max-width:768px){.nav-links{display:none}.nav-btn{display:none}.hbg{display:flex}.stats-in{grid-template-columns:1fr 1fr}.sol-grid{grid-template-columns:1fr}.ph-grid{grid-template-columns:1fr}.esc-grid{grid-template-columns:1fr 1fr}.ft{padding:36px 24px}.fb2{padding:18px 24px}.fg2{grid-template-columns:1fr}.h-h1{font-size:52px}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nb">
+  <div class="nav-in">
+    <a href="#hero" class="logo">
+      <img src="IP LOGO.jpeg" alt="IP Logo" style="height:42px;width:auto;">
+      <div class="logo-txt"><div class="l1">Infrastructure</div><div class="l2">Partners</div></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#solutions">Platform</a></li>
+      <li><a href="#public">Sectors</a></li>
+      <li><a href="#execution">Execution Model</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-btn" onclick="scroll2('contact')">Investor Login</button>
+    <button class="hbg" id="hbg"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob-nav" id="mn">
+  <a href="#hero" onclick="cm()">Home</a>
+  <a href="#solutions" onclick="cm()">Platform</a>
+  <a href="#public" onclick="cm()">Sectors</a>
+  <a href="#execution" onclick="cm()">Execution Model</a>
+  <a href="#investor" onclick="cm()">Investors</a>
+  <a href="#about" onclick="cm()">About</a>
+  <a href="#contact" onclick="cm()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="h-bg"></div>
+  <div class="h-ov"></div>
+  <div class="h-rays"></div>
+  <div class="h-img-grid">
+    <div class="h-img-panel"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Bridge" loading="lazy"></div>
+    <div class="h-img-panel"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80" alt="Construction" loading="lazy"></div>
+  </div>
+  <div class="wrap">
+    <div class="h-content">
+      <div class="h-ew"><div class="h-ew-bar"></div><span>Institutional Capital Architecture</span></div>
+      <h1 class="h-h1">Institutional<br>Infrastructure.<span class="hi">Structured for Scale.</span></h1>
+      <p class="h-sub">We <strong>Structure, Capitalize, and Deliver</strong> Resilient Infrastructure Platforms Across North America through disciplined SPV-based capital architecture and embedded lifecycle governance.</p>
+      <div class="h-btns">
+        <button class="btn btn-b" onclick="scroll2('contact')">Engage With Our Team →</button>
+        <button class="btn btn-g" onclick="scroll2('solutions')">Explore The Platform</button>
+      </div>
+    </div>
+  </div>
+  <div class="h-fade"></div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="wrap"><div class="stats-in">
+    <div class="stat reveal"><div class="sv">$500M+</div><div class="sl">Target Capitalization</div></div>
+    <div class="stat reveal d1"><div class="sv">15+</div><div class="sl">Project Pipelines</div></div>
+    <div class="stat reveal d2"><div class="sv gd">8–12%</div><div class="sl">Target Returns</div></div>
+    <div class="stat reveal d3"><div class="sv">Institutional</div><div class="sl">Investor Alignment</div></div>
+    <div class="stat reveal d4"><div class="sv">Full Lifecycle</div><div class="sl">Project Execution</div></div>
+  </div></div>
+</div>
+
+<!-- PLATFORM STRIP -->
+<div class="plat">
+  <div class="wrap-sm">
+    <div class="plat-ew reveal">A Capital Execution Platform</div>
+    <p class="reveal d1">We Integrate <strong>Capital Structuring, Underwriting,</strong> and Execution Into a <strong>Unified Infrastructure Platform.</strong></p>
+  </div>
+</div>
+
+<!-- SOLUTIONS -->
+<section id="solutions" class="sec">
+  <div class="sbg"></div>
+  <div class="sov"></div>
+  <div class="sc-inner">
+    <div class="wrap">
+      <div class="sol-head reveal">
+        <div class="eyebrow">Infrastructure 2.0 Platform</div>
+        <h2>Solutions for <span>Infrastructure Stakeholders</span></h2>
+        <div class="sol-divline"><span style="color:var(--blue-l);font-size:12px">◆</span></div>
+      </div>
+      <div class="sol-grid">
+        <div class="sol-card reveal">
+          <div class="sol-img"><img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&q=80" alt="Municipal" loading="lazy"><div class="sol-img-ov"></div></div>
+          <div class="sol-body">
+            <h3>Municipal Leaders</h3>
+            <ul class="sol-list"><li>Off Balance Sheet Delivery</li><li>Public Accountability Maintained</li><li>Long-Term Fiscal Alignment</li><li>No Forced Privatization</li></ul>
+            <button class="sol-cta-btn" onclick="scroll2('public')">Public Sector Solutions <span class="sol-cta-arrow">→</span></button>
+          </div>
+        </div>
+        <div class="sol-card reveal d1">
+          <div class="sol-img"><img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&q=80" alt="Investors" loading="lazy"><div class="sol-img-ov"></div></div>
+          <div class="sol-body">
+            <h3>Institutional Investors</h3>
+            <ul class="sol-list"><li>SPV / P3 Capital Deployment</li><li>Lifecycle Asset Governance</li><li>Risk-Adjusted Returns</li><li>Quarterly Reporting Architecture</li></ul>
+            <button class="sol-cta-btn" onclick="scroll2('investor')">Investor Platform <span class="sol-cta-arrow">→</span></button>
+          </div>
+        </div>
+        <div class="sol-card reveal d2">
+          <div class="sol-img"><img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&q=80" alt="Developers" loading="lazy"><div class="sol-img-ov"></div></div>
+          <div class="sol-body">
+            <h3>Developers &amp; Originators</h3>
+            <ul class="sol-list"><li>Capital Alignment Structuring</li><li>Tiered Revenue Waterfall</li><li>Retain Operational Authority</li><li>Execution Oversight Framework</li></ul>
+            <button class="sol-cta-btn" onclick="scroll2('developer')">Partner With Us <span class="sol-cta-arrow">→</span></button>
+          </div>
+        </div>
+        <div class="sol-card why-card reveal d3">
+          <div class="sol-img"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80" alt="Why Us" loading="lazy"><div class="sol-img-ov"></div></div>
+          <div class="sol-body">
+            <h3>Why Us</h3>
+            <ul class="why-list"><li>Disciplined Underwriting</li><li>Proven Execution Model</li><li>Institutional Governance</li><li>North American Focus</li></ul>
+            <button class="sol-cta-btn" onclick="scroll2('about')">Our Advantage <span class="sol-cta-arrow">→</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INFRA 2.0 -->
+<section id="infra2" class="sec">
+  <div class="sbg"></div>
+  <div class="sov"></div>
+  <div class="sc-inner">
+    <div class="wrap">
+      <div class="i2-grid">
+        <div class="reveal">
+          <div class="eyebrow">Infrastructure 2.0</div>
+          <h2 class="sec-h">Capital Without <span class="gld">Conventional Debt</span></h2>
+          <p class="i2-left p">A governance-defined, SPV-based capital architecture designed for long-horizon accountability. Infrastructure 2.0 establishes capital layering, revenue assignment, covenant thresholds, and lifecycle oversight from inception.</p>
+          <p class="i2-left p">Every SPV defines capital stack hierarchy, revenue waterfall, reserve structures, reporting frequency, covenant thresholds, and exit mechanisms before a dollar is deployed.</p>
+          <button class="btn btn-b" onclick="scroll2('contact')">Request Infra 2.0 Briefing →</button>
+          <div class="proc-box reveal d2">
+            <h4>Infrastructure 2.0 — Capital Without Conventional Debt</h4>
+            <div class="proc-row">
+              <div class="proc-step"><div class="proc-ico">🏗</div><span>Origination</span></div>
+              <div class="proc-arr">›</div>
+              <div class="proc-step"><div class="proc-ico">📊</div><span>Underwriting</span></div>
+              <div class="proc-arr">›</div>
+              <div class="proc-step"><div class="proc-ico">🏛</div><span>Capital Structuring</span></div>
+              <div class="proc-arr">›</div>
+              <div class="proc-step"><div class="proc-ico">🚀</div><span>Project Deployment</span></div>
+              <div class="proc-arr">›</div>
+              <div class="proc-step"><div class="proc-ico">💰</div><span>Revenue Stream</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal d2">
+          <div class="cmp">
+            <div class="cmp-h"><div>Attribute</div><div>Traditional Debt</div><div>Infrastructure 2.0</div></div>
+            <div class="cmp-r"><div>Structure</div><div>Fixed repayment</div><div>SPV-based participation</div></div>
+            <div class="cmp-r"><div>Balance Sheet</div><div>Direct expansion</div><div>Project-isolated vehicle</div></div>
+            <div class="cmp-r"><div>Distribution</div><div>Fixed interest</div><div>Revenue waterfall</div></div>
+            <div class="cmp-r"><div>Rate Exposure</div><div>Direct exposure</div><div>Governance-structured</div></div>
+            <div class="cmp-r"><div>Oversight</div><div>Lender covenants</div><div>Lifecycle governance</div></div>
+            <div class="cmp-r"><div>Exit</div><div>Amortization schedule</div><div>Defined exit mechanisms</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLIC SECTOR -->
+<section id="public" class="sec">
+  <div class="sbg"></div>
+  <div class="sov"></div>
+  <div class="sc-inner">
+    <div class="wrap">
+      <div class="pub-grid">
+        <div class="reveal">
+          <div class="eyebrow">Public Sector</div>
+          <h2 class="sec-h">Governance-Forward <em>Public Infrastructure</em></h2>
+          <p style="font-size:15px;color:var(--muted);line-height:1.8;margin:16px 0 28px;">Municipal leaders operate within fiscal, regulatory, and political constraints. Infrastructure 2.0 expands optionality through structured SPV-based capital segmentation — without sacrificing public accountability.</p>
+          <div class="pub-feats">
+            <div class="pub-feat"><div class="pf-ico">🏦</div><div class="pf-t"><strong>Fiscal Flexibility Preservation</strong><span>Dedicated project vehicles may preserve general obligation capacity where jurisdictionally compliant and independently reviewed.</span></div></div>
+            <div class="pub-feat"><div class="pf-ico">⚖️</div><div class="pf-t"><strong>Governance Preservation</strong><span>No forced privatization. Public oversight maintained. Reporting transparency embedded contractually.</span></div></div>
+            <div class="pub-feat"><div class="pf-ico">📋</div><div class="pf-t"><strong>Stress-Tested Revenue Protocols</strong><span>Revenue underperformance scenarios modeled with reserve protocols before capital deployment.</span></div></div>
+            <div class="pub-feat"><div class="pf-ico">🛡</div><div class="pf-t"><strong>Escalation Clarity Defined</strong><span>Four-tier escalation framework with contractually defined response protocols at each level.</span></div></div>
+          </div>
+          <br><button class="btn btn-b" onclick="scroll2('contact')">Request Public Sector Briefing</button>
+        </div>
+        <div class="reveal d2">
+          <div class="eyebrow">Common Questions</div>
+          <h3 style="font-family:var(--cond);font-size:22px;font-weight:700;text-transform:uppercase;color:#fff;margin:12px 0 24px;letter-spacing:.06em">FAQ</h3>
+          <div class="faq-wrap">
+            <div class="faq-item"><button class="faq-q" onclick="tFaq(this)">Is this classified as debt?<span class="faq-plus">+</span></button><div class="faq-ans"><p>Classification is accounting-dependent and jurisdiction-specific. Each SPV structure is designed for independent review prior to engagement. Municipal advisors and counsel are integral to this determination.</p></div></div>
+            <div class="faq-item"><button class="faq-q" onclick="tFaq(this)">More expensive than municipal bonds?<span class="faq-plus">+</span></button><div class="faq-ans"><p>A direct comparison must consider total lifecycle governance costs, reserve requirements, and fiscal flexibility preserved. Infrastructure 2.0 may offer superior total value when all lifecycle factors are considered.</p></div></div>
+            <div class="faq-item"><button class="faq-q" onclick="tFaq(this)">What if revenue underperforms?<span class="faq-plus">+</span></button><div class="faq-ans"><p>Revenue assumptions are stress-tested prior to capital deployment. Reserve structures and the four-tier escalation protocol provide structured response pathways at each stage.</p></div></div>
+            <div class="faq-item"><button class="faq-q" onclick="tFaq(this)">Does this involve privatization?<span class="faq-plus">+</span></button><div class="faq-ans"><p>No. Infrastructure Partners structures capital and governance while public authorities retain ownership and operational mandate. The SPV isolates capital, not ownership authority.</p></div></div>
+            <div class="faq-item"><button class="faq-q" onclick="tFaq(this)">What is the consultation process?<span class="faq-plus">+</span></button><div class="faq-ans"><p>Six stages: Consultation → Review → Underwriting → Structural Design → Governance Documentation → Capital Alignment. Each stage gates the next, ensuring thorough review before proceeding.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEVELOPER -->
+<section id="developer" class="sec">
+  <div class="sbg"></div>
+  <div class="sov"></div>
+  <div class="sc-inner">
+    <div class="wrap">
+      <div class="dev-grid">
+        <div class="reveal">
+          <div class="eyebrow">Developer Partnerships</div>
+          <h2 class="sec-h">Institutional Capital for <em>Infrastructure Originators</em></h2>
+          <p style="font-size:15px;color:var(--muted);line-height:1.8;margin:16px 0 20px">Developers retain full responsibility for origination, engineering, procurement, and operations. We structure the capital stack, SPV governance, revenue waterfall mechanics, and institutional underwriting alignment.</p>
+          <div class="cap-label">Capital Stack Structure</div>
+          <div class="sl sl1"><span>Senior Institutional Capital</span><span class="sl-note">TIER 1</span></div>
+          <div class="sl sl2"><span>Subordinated Capital</span><span class="sl-note">TIER 2</span></div>
+          <div class="sl sl3"><span>Performance Incentive Layer</span><span class="sl-note">TIER 3</span></div>
+          <div class="sl sl4"><span>Developer Equity Alignment</span><span class="sl-note">TIER 4</span></div>
+          <div class="sl sl5"><span>Contingency &amp; Maintenance Reserves</span><span class="sl-note">RESERVE</span></div>
+          <br><button class="btn btn-b" onclick="scroll2('contact')">Schedule Developer Consultation</button>
+        </div>
+        <div class="reveal d2">
+          <div class="wf-label">Revenue Waterfall — Distribution Order</div>
+          <div class="wf">
+            <div class="wf-step"><span class="wf-n">01</span><span>Operating &amp; Maintenance Coverage</span></div>
+            <div class="wf-step"><span class="wf-n">02</span><span>Reserve Contributions</span></div>
+            <div class="wf-step"><span class="wf-n">03</span><span>Senior Capital Alignment</span></div>
+            <div class="wf-step"><span class="wf-n">04</span><span>Subordinated Capital Alignment</span></div>
+            <div class="wf-step"><span class="wf-n">05</span><span>Performance Incentive Distribution</span></div>
+            <div class="wf-step"><span class="wf-n">06</span><span>Surplus Distribution</span></div>
+          </div>
+          <div class="wf-label">Risk Allocation Framework</div>
+          <div class="risk-2">
+            <div class="risk-card"><strong>Construction Risk</strong><span>Allocated to parties with construction control</span></div>
+            <div class="risk-card"><strong>Operational Risk</strong><span>Managed through performance benchmarks</span></div>
+            <div class="risk-card"><strong>Revenue Risk</strong><span>Stress-tested prior to deployment</span></div>
+            <div class="risk-card"><strong>Governance Risk</strong><span>Mitigated through reporting covenants</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="wrap cta-in">
+    <h2 class="reveal">Institutionalize Your Infrastructure Platform</h2>
+    <p class="reveal d1">Schedule a structured consultation to explore developer partnership architecture.</p>
+    <div class="cta-btns reveal d2">
+      <button class="btn btn-b" onclick="scroll2('contact')">Schedule Developer Consultation →</button>
+      <button class="btn btn-g" onclick="scroll2('infra2')">Download Overview</button>
+    </div>
+  </div>
+</div>
+
+<!-- EXECUTION MODEL -->
+<section id="execution" class="sec">
+  <div class="sbg"></div>
+  <div class="sov"></div>
+  <div class="sc-inner">
+    <div class="wrap">
+      <div class="exec-head reveal">
+        <div class="eyebrow">Execution Model</div>
+        <h2 class="sec-h">A Disciplined <em>Infrastructure Process</em></h2>
+        <p style="color:var(--muted);font-size:15px;max-width:500px;margin:14px auto 0">Structured methodology from origination through full lifecycle governance.</p>
+      </div>
+      <div class="phases">
+        <div class="phase reveal"><div class="ph-num"><span class="ph-tag">Phase</span><span class="ph-n">01</span></div><div class="ph-info"><h3>Origination</h3><p>Preliminary project review and eligibility assessment against underwriting criteria, sector focus, and structural viability benchmarks.</p></div></div>
+        <div class="phase reveal"><div class="ph-num"><span class="ph-tag">Phase</span><span class="ph-n">02</span></div><div class="ph-info"><h3>Institutional Underwriting</h3><p>Revenue durability modeling and stress testing across all risk categories. Counterparty strength, asset essentiality, and regulatory stability assessment.</p></div></div>
+        <div class="phase reveal"><div class="ph-num"><span class="ph-tag">Phase</span><span class="ph-n">03</span></div><div class="ph-info"><h3>Capital Structuring</h3><p>SPV formation, capital stack definition, covenant drafting, revenue waterfall design, and reserve structure determination. Governance documentation established.</p></div></div>
+        <div class="phase reveal"><div class="ph-num"><span class="ph-tag">Phase</span><span class="ph-n">04</span></div><div class="ph-info"><h3>Deployment Oversight</h3><p>Construction milestone monitoring, compliance verification against covenant thresholds, and reserve adequacy tracking through the full deployment period.</p></div></div>
+        <div class="phase reveal"><div class="ph-num"><span class="ph-tag">Phase</span><span class="ph-n">05</span></div><div class="ph-info"><h3>Lifecycle Governance</h3><p>Quarterly reporting cadence, reserve position monitoring, four-tier escalation protocol activation when thresholds are triggered, and independent audit coordination.</p></div></div>
+      </div>
+      <div class="esc-hd reveal"><div class="eyebrow">Governance Escalation</div><h3>Four-Tier Escalation Framework</h3></div>
+      <div class="esc-grid">
+        <div class="ec ec1 reveal"><span class="ec-lv">Level 01</span><h4>Reporting Alert</h4><p>Covenant threshold proximity or reporting variance triggers formal notification and increased monitoring cadence.</p></div>
+        <div class="ec ec2 reveal d1"><span class="ec-lv">Level 02</span><h4>Covenant Review</h4><p>Formal review with structured response timeline, stakeholder notification, and compliance certification requirement.</p></div>
+        <div class="ec ec3 reveal d2"><span class="ec-lv">Level 03</span><h4>Remedial Action Plan</h4><p>Mandatory RAP with defined milestones, reserve review, increased reporting frequency, and board update.</p></div>
+        <div class="ec ec4 reveal d3"><span class="ec-lv">Level 04</span><h4>Structural Intervention</h4><p>If contractually defined, structural intervention mechanisms activated per the SPV governance documentation.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTOR -->
+<section id="investor" class="sec">
+  <div class="sbg"></div>
+  <div class="sov"></div>
+  <div class="sc-inner">
+    <div class="wrap">
+      <div class="inv-grid">
+        <div class="reveal">
+          <div class="eyebrow">Investor Platform</div>
+          <h2 class="sec-h">Institutional Infrastructure <em>Capital Platform</em></h2>
+          <p style="font-size:15px;color:var(--muted);line-height:1.8;margin:14px 0 8px">Every platform undergoes seven-pillar underwriting review before capital alignment is considered.</p>
+          <div class="pillars">
+            <div class="prow"><span class="pn">01</span><strong>Revenue Durability</strong></div>
+            <div class="prow"><span class="pn">02</span><strong>Counterparty Strength</strong></div>
+            <div class="prow"><span class="pn">03</span><strong>Asset Essentiality</strong></div>
+            <div class="prow"><span class="pn">04</span><strong>Regulatory Stability</strong></div>
+            <div class="prow"><span class="pn">05</span><strong>Governance Structure Integrity</strong></div>
+            <div class="prow"><span class="pn">06</span><strong>Lifecycle Capital Sufficiency</strong></div>
+            <div class="prow"><span class="pn">07</span><strong>Exit Clarity</strong></div>
+          </div>
+          <br><button class="btn btn-b" onclick="scroll2('contact')">Request Institutional Briefing →</button>
+        </div>
+        <div class="reveal d2">
+          <div class="rep-panel">
+            <h3>Reporting Architecture</h3>
+            <div class="ri"><div class="ri-chk">✓</div><span>Quarterly Financial Reporting with variance analysis against underwriting model</span></div>
+            <div class="ri"><div class="ri-chk">✓</div><span>Performance Metrics &amp; KPI Tracking against defined benchmarks</span></div>
+            <div class="ri"><div class="ri-chk">✓</div><span>Reserve Position Disclosure and adequacy certification</span></div>
+            <div class="ri"><div class="ri-chk">✓</div><span>Covenant Compliance Certification by authorized officer</span></div>
+            <div class="ri"><div class="ri-chk">✓</div><span>Independent Audit coordination (if required by governance documentation)</span></div>
+          </div>
+          <div class="qual"><p><strong>Qualification Notice:</strong> Participation details disclosed only through formal qualification and regulatory compliance review. This platform does not constitute a public offering or solicitation of securities. Institutional qualification required prior to participation.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="cases" class="sec">
+  <div class="sbg"></div>
+  <div class="sov"></div>
+  <div class="sc-inner">
+    <div class="wrap">
+      <div style="text-align:center;margin-bottom:56px" class="reveal">
+        <div class="eyebrow">Applied Platforms</div>
+        <h2 class="sec-h">Infrastructure 2.0 <em>In Practice</em></h2>
+        <p style="color:var(--muted);font-size:15px;max-width:500px;margin:12px auto 0">Illustrative deployments demonstrating governance, capital alignment, and lifecycle discipline.</p>
+      </div>
+      <div class="feat-case reveal" style="margin-bottom:3px">
+        <div class="case-img">
+          <img src="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=900&q=80" alt="Energy" loading="lazy">
+          <div class="case-img-ov"></div>
+          <div class="case-badge-wrap"><span class="cbadge">Featured — Illustrative Example</span></div>
+        </div>
+        <div class="case-body">
+          <div class="eyebrow" style="margin-bottom:8px">Energy Sector</div>
+          <h3>Municipal Energy Resilience Program</h3>
+          <p>A mid-sized metropolitan healthcare network required resilience modernization and microgrid deployment, demanding long-horizon capital with embedded governance across construction and operational phases.</p>
+          <div class="cms">
+            <div class="cm"><strong>Capital</strong><span>Dedicated SPV with layered capital stack and reserve framework</span></div>
+            <div class="cm"><strong>Risk</strong><span>Construction, operational, and revenue risks allocated and stress-tested</span></div>
+            <div class="cm"><strong>Governance</strong><span>Quarterly reporting and four-tier escalation embedded at inception</span></div>
+            <div class="cm"><strong>Outcome</strong><span>Infrastructure modernization under structured lifecycle accountability</span></div>
+          </div>
+          <br><button class="btn btn-b" onclick="scroll2('contact')">Discuss a Similar Project →</button>
+        </div>
+      </div>
+      <div class="ph-grid">
+        <div class="ph-card reveal"><div class="ph-bg"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80" alt="Water" loading="lazy"></div><div class="ph-ov"></div><div class="ph-body"><span class="ph-tag">Municipal</span><h4>Water Infrastructure Modernization</h4><p>SPV-based structure with municipal governance preservation.</p><span class="ph-pend">Details Pending Authorization</span></div></div>
+        <div class="ph-card reveal d1"><div class="ph-bg"><img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&q=80" alt="Transport" loading="lazy"></div><div class="ph-ov"></div><div class="ph-body"><span class="ph-tag">Transportation</span><h4>Corridor Expansion Program</h4><p>Multi-phase capital deployment with milestone-based oversight.</p><span class="ph-pend">Details Pending Authorization</span></div></div>
+        <div class="ph-card reveal d2"><div class="ph-bg"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Portfolio" loading="lazy"></div><div class="ph-ov"></div><div class="ph-body"><span class="ph-tag">Developer</span><h4>Portfolio Aggregation Platform</h4><p>Institutional capital stack across aggregated developer projects.</p><span class="ph-pend">Details Pending Authorization</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="wrap cta-in">
+    <h2 class="reveal">Evaluate Infrastructure 2.0 for Your Sector</h2>
+    <p class="reveal d1">Begin the structured consultation and project review process today.</p>
+    <div class="cta-btns reveal d2"><button class="btn btn-gold" onclick="scroll2('contact')">Request Case Discussion →</button></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="sec">
+  <div class="sbg"></div>
+  <div class="sov"></div>
+  <div class="sc-inner">
+    <div class="wrap">
+      <div class="ab-grid">
+        <div class="reveal">
+          <div class="eyebrow">About</div>
+          <h2 class="sec-h">A Standalone <em>Institutional Platform</em></h2>
+          <p class="ab-left p">Infrastructure Partners is a strategic joint venture formed to institutionalize Infrastructure 2.0 capital platforms through disciplined SPV-based architecture, underwriting rigor, and embedded governance frameworks.</p>
+          <p class="ab-left p">The platform operates independently with a capital preservation-first mandate and compliance-first culture — purpose-built for long-horizon infrastructure delivery across public, developer, and institutional constituencies.</p>
+          <div class="jv">
+            <div class="jv-e"><strong>Origyn International</strong><span>Strategic Joint Venture Partner</span></div>
+            <div class="jv-plus">+</div>
+            <div class="jv-e"><strong>Onsite Utility Services Capital</strong><span>Strategic Joint Venture Partner</span></div>
+          </div>
+        </div>
+        <div class="prncpls reveal d2">
+          <div class="prn"><div class="prn-ico">◈</div><div class="prn-t"><h4>Structural Discipline</h4><p>Capital is aligned only after governance frameworks and full risk segmentation are defined. No deployment before structure.</p></div></div>
+          <div class="prn"><div class="prn-ico">◎</div><div class="prn-t"><h4>Transparency First</h4><p>Revenue waterfalls, reserve requirements, and reporting protocols documented and agreed before any capital is deployed.</p></div></div>
+          <div class="prn"><div class="prn-ico">◉</div><div class="prn-t"><h4>Lifecycle Accountability</h4><p>Our governance extends beyond funding cycles — from SPV formation through full operational maturity of every infrastructure asset.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="sec">
+  <div class="sbg"></div>
+  <div class="sov"></div>
+  <div class="sc-inner">
+    <div class="wrap">
+      <div class="ct-grid">
+        <div class="reveal">
+          <div class="eyebrow">Contact</div>
+          <h2 class="sec-h">Engage With <em>Infrastructure Partners</em></h2>
+          <p class="ct-info p">Begin with a structured consultation and project review. All inquiries are subject to underwriting review, legal evaluation, and regulatory compliance.</p>
+          <div class="ct-proc">
+            <div class="ct-step"><div class="ct-dot">01</div><span>Submit structured inquiry</span></div>
+            <div class="ct-step"><div class="ct-dot">02</div><span>Eligibility and fit assessment</span></div>
+            <div class="ct-step"><div class="ct-dot">03</div><span>Structured consultation call</span></div>
+            <div class="ct-step"><div class="ct-dot">04</div><span>Preliminary underwriting review</span></div>
+            <div class="ct-step"><div class="ct-dot">05</div><span>Structural design and governance documentation</span></div>
+            <div class="ct-step"><div class="ct-dot">06</div><span>Capital alignment and deployment</span></div>
+          </div>
+        </div>
+        <div class="reveal d2">
+          <div class="form-card">
+            <div class="fg2">
+              <div class="fg"><label>Full Name *</label><input type="text" placeholder="Jane Smith"></div>
+              <div class="fg"><label>Title *</label><input type="text" placeholder="Director of Finance"></div>
+              <div class="fg"><label>Organization *</label><input type="text" placeholder="City of Springfield"></div>
+              <div class="fg"><label>Entity Type *</label><select><option value="" disabled selected>Select Type</option><option>Public / Municipal</option><option>Developer / Originator</option><option>Institutional Investor</option><option>Other</option></select></div>
+              <div class="fg"><label>Project Category *</label><select><option value="" disabled selected>Select Category</option><option>Energy / Resilience</option><option>Water / Utilities</option><option>Transportation</option><option>Healthcare Infrastructure</option><option>Municipal Facilities</option><option>Developer Portfolio</option><option>Other</option></select></div>
+              <div class="fg"><label>Estimated Capital Range *</label><select><option value="" disabled selected>Select Range</option><option>Under $10M</option><option>$10M – $50M</option><option>$50M – $100M</option><option>$100M – $500M</option><option>$500M+</option></select></div>
+              <div class="fg"><label>State / Jurisdiction *</label><input type="text" placeholder="California"></div>
+              <div class="fg"><label>Email *</label><input type="email" placeholder="jane@organization.com"></div>
+              <div class="fg full"><label>Phone (Optional)</label><input type="tel" placeholder="+1 (555) 000-0000"></div>
+              <div class="fg full"><label>Project Description (500 words max)</label><textarea placeholder="Describe your infrastructure project, current stage, key stakeholders, and primary objectives..."></textarea></div>
+            </div>
+            <div class="form-disc">Submission does not constitute a capital commitment or offer. All inquiries are subject to underwriting review, legal evaluation, and applicable regulatory compliance requirements.</div>
+            <button class="btn btn-b form-sub" onclick="fSub(this)">Submit Inquiry →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft">
+    <div class="fb">
+      <div class="logo" style="margin-bottom:14px"><img src="IP LOGO.jpeg" alt="IP Logo" style="height:42px;width:auto;"><div class="logo-txt"><div class="l1">Infrastructure</div><div class="l2">Partners</div></div></div>
+      <p>A standalone institutional infrastructure platform structured for long-horizon accountability. Capital preservation-first. Compliance-first.</p>
+      <div class="fjv">A Joint Venture: Origyn International + Onsite Utility Services Capital</div>
+    </div>
+    <div class="fc"><h5>Platform</h5><ul><li><a href="#infra2">Infrastructure 2.0</a></li><li><a href="#public">Public Sector</a></li><li><a href="#developer">Developer Partnerships</a></li><li><a href="#investor">Investor Platform</a></li></ul></div>
+    <div class="fc"><h5>Process</h5><ul><li><a href="#execution">Execution Model</a></li><li><a href="#cases">Case Studies</a></li><li><a href="#execution">Escalation Framework</a></li></ul></div>
+    <div class="fc"><h5>Company</h5><ul><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li><li><a href="#contact">Investor Login</a></li></ul></div>
+  </div>
+  <div class="fb2">
+    <p>© Infrastructure Partners. All Rights Reserved.</p>
+    <p class="flegal">This website does not constitute an offer to sell or solicitation of securities. Participation in any capital structure is subject to formal qualification and applicable regulatory requirements. Infrastructure Partners is a strategic joint venture between Origyn International and Onsite Utility Services Capital.</p>
+  </div>
+</footer>
+
+<script>
+function scroll2(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+const nb=document.getElementById('nb');
+window.addEventListener('scroll',()=>nb.classList.toggle('sc',scrollY>60));
+document.getElementById('hbg').addEventListener('click',()=>document.getElementById('mn').classList.toggle('open'));
+function cm(){document.getElementById('mn').classList.remove('open')}
+function tFaq(btn){
+  const item=btn.parentElement,ans=item.querySelector('.faq-ans'),open=item.classList.contains('active');
+  document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('active');i.querySelector('.faq-ans').classList.remove('open')});
+  if(!open){item.classList.add('active');ans.classList.add('open')}
+}
+function fSub(btn){
+  btn.textContent='Inquiry Submitted ✓';btn.style.background='#1a6b3a';btn.style.borderColor='#1a6b3a';btn.disabled=true;
+  setTimeout(()=>{btn.textContent='Submit Another Inquiry →';btn.style.background='';btn.style.borderColor='';btn.disabled=false},4000)
+}
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('up')}),{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>{if(el.getBoundingClientRect().top<innerHeight)el.classList.add('up')}),100);
+</script>
+</body>
+</html>
